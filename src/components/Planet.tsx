@@ -5,6 +5,7 @@ import type { Group, Mesh, MeshStandardMaterial } from 'three'
 import * as THREE from 'three'
 import type { PlanetSection } from '../types'
 import { planetTextureConfigs } from '../data/planetTextures'
+import { assetUrl } from '../utils/assetUrl'
 import { PlanetLabel } from './PlanetLabel'
 
 interface PlanetProps {
@@ -25,7 +26,10 @@ export function Planet({ planet, isSelected, isOverview, isMobile, onSelect }: P
   const [hovered, setHovered] = useState(false)
 
   const config = planetTextureConfigs[planet.id] ?? planetTextureConfigs.about
-  const [surfaceMap, cloudMap] = useTexture([config.surface, config.clouds ?? '/textures/clouds.jpg'])
+  const [surfaceMap, cloudMap] = useTexture([
+    config.surface,
+    config.clouds ?? assetUrl('textures/clouds.jpg'),
+  ])
 
   useEffect(() => {
     surfaceMap.colorSpace = THREE.SRGBColorSpace

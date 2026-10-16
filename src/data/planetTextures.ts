@@ -1,3 +1,5 @@
+import { assetUrl } from '../utils/assetUrl'
+
 export interface PlanetTextureConfig {
   surface: string
   clouds?: string
@@ -12,8 +14,8 @@ export interface PlanetTextureConfig {
 // https://www.solarsystemscope.com/textures/
 export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
   about: {
-    surface: '/textures/earth.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/earth.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.42,
     cloudSpeed: 0.08,
     tint: '#8ec5ff',
@@ -21,8 +23,8 @@ export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
     metalness: 0.05,
   },
   experience: {
-    surface: '/textures/jupiter.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/jupiter.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.28,
     cloudSpeed: 0.12,
     tint: '#ffb07a',
@@ -30,8 +32,8 @@ export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
     metalness: 0.04,
   },
   education: {
-    surface: '/textures/neptune.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/neptune.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.35,
     cloudSpeed: 0.1,
     tint: '#c4a1ff',
@@ -39,8 +41,8 @@ export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
     metalness: 0.06,
   },
   skills: {
-    surface: '/textures/earth.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/earth.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.38,
     cloudSpeed: 0.09,
     tint: '#7dffb5',
@@ -48,8 +50,8 @@ export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
     metalness: 0.05,
   },
   projects: {
-    surface: '/textures/mars.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/mars.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.3,
     cloudSpeed: 0.11,
     tint: '#ff8fb4',
@@ -57,8 +59,8 @@ export const planetTextureConfigs: Record<string, PlanetTextureConfig> = {
     metalness: 0.03,
   },
   contact: {
-    surface: '/textures/venus.jpg',
-    clouds: '/textures/clouds.jpg',
+    surface: assetUrl('textures/venus.jpg'),
+    clouds: assetUrl('textures/clouds.jpg'),
     cloudOpacity: 0.4,
     cloudSpeed: 0.07,
     tint: '#ffe08a',
