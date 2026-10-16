@@ -1,0 +1,5 @@
+Planet texture maps from Solar System Scope
+https://www.solarsystemscope.com/textures/
+
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+Based on NASA elevation and imagery data.

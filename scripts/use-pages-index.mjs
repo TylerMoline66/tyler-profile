@@ -1,0 +1,22 @@
+import { writeFileSync } from 'node:fs'
+
+const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tyler Moline — Portfolio</title>
+    <!-- GitHub Pages serves this file from main. Send visitors to the Vite build. -->
+    <meta http-equiv="refresh" content="0; url=./docs/" />
+    <script>
+      location.replace('./docs/' + location.search + location.hash)
+    </script>
+  </head>
+  <body>
+    <p><a href="./docs/">Open portfolio</a></p>
+  </body>
+</html>
+`
+
+writeFileSync('index.html', html)
+console.log('Wrote GitHub Pages redirect index.html → ./docs/')

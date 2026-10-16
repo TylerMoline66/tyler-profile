@@ -2,6 +2,8 @@
 
 3D planet portfolio built with React, Vite, and Three.js.
 
+**Live:** https://tylermoline66.github.io/tyler-profile/
+
 ## Local development
 
 ```bash
@@ -11,13 +13,21 @@ npm run dev
 
 ## GitHub Pages
 
-Live site: https://tylermoline66.github.io/tyler-profile/
+The production build lives in `docs/` (committed). The root `index.html` redirects there so GitHub Pages works when the source is **Deploy from a branch → main → / (root)**.
 
-Deploys automatically from `main` via `.github/workflows/deploy-pages.yml`.
+After changing the site:
 
-**One-time setup** (if Pages isn’t enabled yet):
+```bash
+npm run build
+git add docs index.html
+git commit -m "Update Pages build"
+git push
+```
 
-1. Repo → **Settings** → **Pages**
-2. Under **Build and deployment** → **Source**, choose **GitHub Actions**
+### Pages settings
 
-After the workflow finishes, open the URL above (not the repo root — include `/tyler-profile/`).
+https://github.com/TylerMoline66/tyler-profile/settings/pages
+
+- Source: **Deploy from a branch**
+- Branch: **main**
+- Folder: **/ (root)** — or **/docs** if you prefer skipping the redirect
