@@ -13,9 +13,9 @@ interface PlanetLabelProps {
 export function PlanetLabel({ name, tagline, color, size, hovered, isMobile }: PlanetLabelProps) {
   return (
     <Html
-      position={[0, size + (isMobile ? 1.1 : 2), 0]}
+      position={[0, size + (isMobile ? 1.15 : 2.1), 0]}
       center
-      distanceFactor={isMobile ? 1.8 : 1.1}
+      distanceFactor={isMobile ? 2.05 : 1.3}
       style={{ pointerEvents: 'none' }}
     >
       <div

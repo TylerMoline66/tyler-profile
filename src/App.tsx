@@ -4,10 +4,12 @@ import { TEXTURE_ATTRIBUTION } from './data/planetTextures'
 import { Scene } from './components/Scene'
 import { DetailPanel } from './components/DetailPanel'
 import { useIsMobile } from './hooks/useIsMobile'
+import { useCompactLayout } from './hooks/useCompactLayout'
 import type { FlightPhase } from './components/CameraRig'
 
 function App() {
   const isMobile = useIsMobile()
+  const compactLayout = useCompactLayout()
   const [selectedPlanetId, setSelectedPlanetId] = useState<string | null>(null)
   const [showDetails, setShowDetails] = useState(false)
   const [flightPhase, setFlightPhase] = useState<FlightPhase>('idle')
@@ -45,7 +47,9 @@ function App() {
   const showFlightUi = Boolean(selectedPlanet && !showDetails)
 
   return (
-    <div className={`app ${isMobile ? 'app--mobile' : 'app--desktop'}`}>
+    <div
+      className={`app ${isMobile ? 'app--mobile' : 'app--desktop'} ${compactLayout ? 'app--compact' : 'app--wide'}`}
+    >
       <Scene
         planets={planets}
         selectedPlanetId={selectedPlanetId}

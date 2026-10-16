@@ -44,27 +44,29 @@ body,
   touch-action: none;
 }
 
-/* Hero overlay */
+/* Hero overlay — kept short so planets frame under it on every screen size */
 .hero {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  padding: 2.5rem 2rem 1rem;
+  max-height: min(22vh, 11.5rem);
+  padding: 1.75rem 2rem 0.65rem;
   text-align: center;
   pointer-events: none;
+  overflow: hidden;
   background: linear-gradient(
     to bottom,
-    rgba(3, 3, 8, 0.45) 0%,
-    rgba(3, 3, 8, 0.15) 45%,
-    transparent 75%
+    rgba(3, 3, 8, 0.5) 0%,
+    rgba(3, 3, 8, 0.18) 55%,
+    transparent 100%
   );
   z-index: 10;
 }
 
 .hero__eyebrow {
-  margin: 0 0 0.5rem;
-  font-size: 0.75rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -73,9 +75,10 @@ body,
 
 .hero__name {
   margin: 0;
-  font-size: clamp(2.6rem, 6.5vw, 4.75rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.85rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1;
   background: linear-gradient(135deg, #fff 0%, #a8b8ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -83,18 +86,27 @@ body,
 }
 
 .hero__title {
-  margin: 0.25rem 0 0;
-  font-size: 1.35rem;
+  margin: 0.3rem 0 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   font-weight: 400;
   color: var(--text-secondary);
 }
 
 .hero__hint {
-  margin: 1rem auto 0;
+  margin: 0.55rem auto 0;
   max-width: 420px;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   animation: pulse-hint 3s ease-in-out infinite;
+}
+
+.app--compact .hero {
+  max-height: min(26vh, 10.5rem);
+  padding: calc(0.85rem + env(safe-area-inset-top)) 1rem 0.5rem;
+}
+
+.app--compact .hero__hint {
+  display: none;
 }
 
 @keyframes pulse-hint {
@@ -112,24 +124,24 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 14px;
-  background: rgba(5, 8, 20, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  background: rgba(4, 7, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .planet-label--desktop {
-  gap: 1rem;
-  padding: 2rem 4rem;
+  gap: 1.1rem;
+  padding: 2.25rem 4.5rem;
   white-space: nowrap;
 }
 
 .planet-label--mobile {
   gap: 0.75rem;
-  max-width: 420px;
-  padding: 1.5rem 2rem;
+  max-width: 460px;
+  padding: 1.65rem 2.25rem;
   white-space: normal;
   text-align: center;
 }
@@ -151,28 +163,34 @@ body,
 }
 
 .planet-label--desktop .planet-label__name {
-  font-size: 20.25rem;
+  font-size: 24rem;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 0.01em;
   line-height: 0.95;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.65);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.85),
+    0 6px 22px rgba(0, 0, 0, 0.7);
 }
 
 .planet-label--desktop .planet-label__tagline {
-  font-size: 11.25rem;
+  font-size: 13rem;
   font-weight: 600;
-  color: rgba(235, 240, 255, 0.92);
+  color: rgba(245, 248, 255, 0.95);
   line-height: 1;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.55);
 }
 
 .planet-label--mobile .planet-label__name {
-  font-size: 10.5rem;
+  font-size: 13rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.85),
+    0 5px 18px rgba(0, 0, 0, 0.65);
 }
 
 .planet-label--mobile .planet-label__tagline {
@@ -468,7 +486,8 @@ body,
   }
 
   .hero {
-    padding: calc(1rem + env(safe-area-inset-top)) 1rem 0.75rem;
+    max-height: min(24vh, 9.5rem);
+    padding: calc(0.75rem + env(safe-area-inset-top)) 1rem 0.4rem;
     background: linear-gradient(
       to bottom,
       rgba(3, 3, 8, 0.62) 0%,
@@ -478,27 +497,24 @@ body,
   }
 
   .hero__eyebrow {
-    margin-bottom: 0.35rem;
-    font-size: 0.62rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.58rem;
   }
 
   .hero__name {
-    font-size: clamp(2.4rem, 14vw, 3.4rem);
+    font-size: clamp(2rem, 11vw, 2.75rem);
     line-height: 0.95;
   }
 
   .hero__title {
-    max-width: 300px;
-    margin: 0.45rem auto 0;
-    font-size: 1.1rem;
+    max-width: 280px;
+    margin: 0.3rem auto 0;
+    font-size: 0.92rem;
     line-height: 1.25;
   }
 
   .hero__hint {
-    max-width: 250px;
-    margin-top: 0.75rem;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    display: none;
   }
 
   .detail-panel {
@@ -583,13 +599,35 @@ body,
 }
 
 @media (max-width: 380px) {
+  .hero {
+    max-height: min(18vh, 6.5rem);
+  }
+
   .hero__name {
-    font-size: 2.35rem;
+    font-size: 1.85rem;
   }
 
   .hero__title,
   .hero__hint {
     display: none;
+  }
+}
+
+/* Short landscape phones / tablets — keep title band thin */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    max-height: min(28vh, 5.5rem);
+    padding: 0.45rem 1rem 0.25rem;
+  }
+
+  .hero__eyebrow,
+  .hero__title,
+  .hero__hint {
+    display: none;
+  }
+
+  .hero__name {
+    font-size: clamp(1.35rem, 5vh, 2rem);
   }
 }
 

@@ -3,7 +3,8 @@ import { Canvas } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
 import type { PlanetSection } from '../types'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { applyMobilePlanetLayout } from '../data/mobilePlanetLayout'
+import { useCompactLayout } from '../hooks/useCompactLayout'
+import { applyCompactPlanetLayout } from '../data/mobilePlanetLayout'
 import { Planet } from './Planet'
 import { CameraRig, type FlightPhase } from './CameraRig'
 import { SpaceEffects } from './SpaceEffects'
@@ -31,10 +32,13 @@ function SceneContent({
   onWarpComplete,
 }: SceneProps) {
   const isMobile = useIsMobile()
+  const compactLayout = useCompactLayout()
   const displayPlanets = useMemo(
     () =>
-      planets.map((planet) => (isMobile ? applyMobilePlanetLayout(planet) : planet)),
-    [isMobile, planets],
+      planets.map((planet) =>
+        compactLayout ? applyCompactPlanetLayout(planet) : planet,
+      ),
+    [compactLayout, planets],
   )
   const selectedPlanet =
     displayPlanets.find((p) => p.id === selectedPlanetId) ?? null
@@ -71,9 +75,11 @@ function SceneContent({
       ))}
 
       <CameraRig
+        planets={displayPlanets}
         selectedPlanet={selectedPlanet}
         isOverview={isOverview}
         isMobile={isMobile}
+        compactLayout={compactLayout}
         flightPhase={flightPhase}
         interactionReady={interactionReady}
         onAlignComplete={onAlignComplete}
@@ -91,7 +97,7 @@ export function Scene(props: SceneProps) {
       style={{ background: '#050817' }}
     >
       <color attach="background" args={['#050817']} />
-      <fog attach="fog" args={['#050817', 42, 110]} />
+      <fog attach="fog" args={['#050817', 55, 160]} />
       <Suspense fallback={null}>
         <SceneContent {...props} />
       </Suspense>
